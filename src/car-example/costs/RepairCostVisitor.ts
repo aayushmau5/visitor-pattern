@@ -4,15 +4,35 @@ import { MercedesCar } from "../cars/MercedesCar";
 import { CostsVisitor } from "./CostsVisitor";
 
 export class RepairCostVisitor implements CostsVisitor {
-  visitBMWCar(v: BMWCar) {
-    console.log(v.getPrice());
+  maxAffordableRepairCost: number;
+  constructor(maxCost: number) {
+    this.maxAffordableRepairCost = maxCost;
   }
 
-  visitBugattiCar(v: BugattiCar) {
-    console.log(v.getPrice());
+  visitBMWCar(v: BMWCar) {
+    const cost = v.getPrice();
+    if (cost > this.maxAffordableRepairCost) {
+      console.log("Cannot repair BMW");
+      return;
+    }
+    console.log("Repaired BMW");
   }
 
   visitMercedesCar(v: MercedesCar) {
-    console.log(v.getPrice());
+    const cost = v.getPrice();
+    if (cost > this.maxAffordableRepairCost) {
+      console.log("Cannot repair Mercedes");
+      return;
+    }
+    console.log("Repaired Mercedes");
+  }
+
+  visitBugattiCar(v: BugattiCar) {
+    const cost = v.getPrice();
+    if (cost > this.maxAffordableRepairCost) {
+      console.log("Cannot repair Bugatti");
+      return;
+    }
+    console.log("Repaired Bugatti");
   }
 }

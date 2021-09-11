@@ -5,7 +5,7 @@ import { RepairCostVisitor } from "./costs/RepairCostVisitor";
 import { PurchaseVisitor } from "./costs/PurchaseVisitor";
 
 const purchaseVisitor = new PurchaseVisitor(2);
-const repairCostVisitor = new RepairCostVisitor();
+const repairCostVisitor = new RepairCostVisitor(3);
 
 const bmwCar = new BMWCar();
 const bugattiCar = new BugattiCar();
